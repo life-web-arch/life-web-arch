@@ -7,13 +7,13 @@ USERNAME = os.getenv('GH_USERNAME')
 headers = {'Authorization': f'token {TOKEN}', 'Accept': 'application/vnd.github.v3+json'}
 
 def get_total_commits():
-    # Search API is the most accurate for absolute total commits
+    # Search API for high-accuracy lifetime commits
     url = f'https://api.github.com/search/commits?q=author:{USERNAME}'
     res = requests.get(url, headers=headers).json()
     return res.get('total_count', 0)
 
 def get_total_contributions():
-    # GraphQL for the "Green Square" count (1,221+)
+    # GraphQL for the total graph count (1,221+)
     query = "query($login: String!) { user(login: $login) { contributionsCollection { contributionCalendar { totalContributions } } } }"
     res = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': {"login": USERNAME}}, headers={"Authorization": f"Bearer {TOKEN}"})
     return res.json()['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions']
@@ -69,9 +69,7 @@ def generate_svg(repos, commits, contribs, loc):
     with open('github_stats.svg', 'w') as f: f.write(svg)
 
 if __name__ == "__main__":
-    print("Fetching high-accuracy lifetime stats...")
     commits = get_total_commits()
     contribs = get_total_contributions()
     repos, loc = get_lifetime_repo_stats()
     generate_svg(repos, commits, contribs, loc)
-    print(f"Success! Found {commits} commits.")
