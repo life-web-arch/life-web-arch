@@ -1,9 +1,25 @@
-<svg width="400" height="210" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100%" height="100%" fill="#0d1117" rx="10"/>
-      <rect width="100%" height="100%" fill="none" rx="10" stroke="#30363d" stroke-width="2"/>
-      <text x="20" y="40" fill="#58a6ff" font-family="Arial" font-size="20" font-weight="bold">life-web-arch's Stats</text>
-      <text x="20" y="80" fill="#c9d1d9" font-family="Arial" font-size="16">📦 Total Repositories: 38</text>
-      <text x="20" y="110" fill="#c9d1d9" font-family="Arial" font-size="16">🔥 Total Commits: 370</text>
-      <text x="20" y="140" fill="#79c0ff" font-family="Arial" font-size="16" font-weight="bold">🌟 Total Contributions: 1,221</text>
-      <text x="20" y="180" fill="#c9d1d9" font-family="Arial" font-size="16">💻 Lines of Code: 472,082</text>
+
+    <svg width="450" height="260" viewBox="0 0 450 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        .header { font: 700 20px 'Segoe UI', Ubuntu, Sans-Serif; fill: #58a6ff; animation: fadeIn 0.8s ease-in-out; }
+        .stat { font: 600 16px 'Segoe UI', Ubuntu, Sans-Serif; fill: #c9d1d9; }
+        .bold { font-weight: 800; fill: #ffffff; }
+        .fork-note { font: italic 11px 'Segoe UI', Ubuntu, Sans-Serif; fill: #6e7681; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); } }
+        .floating { animation: float 3s ease-in-out infinite; }
+      </style>
+      <rect width="448" height="258" x="1" y="1" rx="15" fill="#0d1117" stroke="#30363d" stroke-width="2" />
+      <g class="floating">
+        <text x="25" y="45" class="header">life-web-arch's Digital Footprint</text>
+      </g>
+      <g transform="translate(25, 85)">
+        <text x="0" y="0" class="stat">📦 Total Repositories: <tspan class="bold">35</tspan></text>
+        <text x="0" y="30" class="stat">🔥 Lifetime Commits: <tspan class="bold">1,183</tspan></text>
+        <text x="0" y="60" class="stat">✨ Lifetime Contributions: <tspan class="bold">11</tspan></text>
+        <text x="0" y="95" class="stat" fill="#79c0ff">💻 Lifetime Lines of Code: <tspan class="bold" fill="#79c0ff">489,054</tspan></text>
+      </g>
+      <line x1="25" y1="210" x2="425" y2="210" stroke="#30363d" stroke-width="1" />
+      <text x="25" y="235" class="fork-note">* Data covers your entire GitHub history (forks excluded)</text>
     </svg>
+    
