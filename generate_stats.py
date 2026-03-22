@@ -1,19 +1,38 @@
 import os
 import requests
 import time
+from datetime import datetime
 
 TOKEN = os.getenv('GH_PAT')
 USERNAME = os.getenv('GH_USERNAME')
 headers = {'Authorization': f'token {TOKEN}', 'Accept': 'application/vnd.github.v3+json'}
 
-def get_total_contributions():
-    # GraphQL for the "Green Square" count (1,220+)
-    query = "query($login: String!) { user(login: $login) { contributionsCollection { contributionCalendar { totalContributions } } } }"
-    res = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': {"login": USERNAME}}, headers={"Authorization": f"Bearer {TOKEN}"})
+def get_lifetime_contributions():
+    # 1. First, find out when you joined GitHub
+    user_query = "query($login: String!) { user(login: $login) { createdAt } }"
+    user_data = requests.post('https://api.github.com/graphql', 
+        json={'query': user_query, 'variables': {"login": USERNAME}}, 
+        headers={"Authorization": f"Bearer {TOKEN}"}).json()
+    
+    join_date = user_data['data']['user']['createdAt']
+    
+    # 2. Query contributions from your join date until NOW
+    query = """
+    query($login: String!, $from: DateTime!) {
+      user(login: $login) {
+        contributionsCollection(from: $from) {
+          contributionCalendar { totalContributions }
+        }
+      }
+    }
+    """
+    res = requests.post('https://api.github.com/graphql', 
+        json={'query': query, 'variables': {"login": USERNAME, "from": join_date}}, 
+        headers={"Authorization": f"Bearer {TOKEN}"})
     return res.json()['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions']
 
-def get_lifetime_stats():
-    # REST for Lifetime Commits and Lines of Code (The 485k+ number)
+def get_lifetime_repo_stats():
+    # Fetch ALL owner repositories
     repos = requests.get(f'https://api.github.com/user/repos?per_page=100&affiliation=owner', headers=headers).json()
     total_commits = 0
     total_loc = 0
@@ -25,7 +44,7 @@ def get_lifetime_stats():
         name = repo['name']
         url = f"https://api.github.com/repos/{USERNAME}/{name}/stats/contributors"
         
-        # Robust Retry Logic (Patient Bot)
+        # Patient retry logic for deep history calculation
         response = requests.get(url, headers=headers)
         retries = 0
         while response.status_code == 202 and retries < 5:
@@ -35,11 +54,12 @@ def get_lifetime_stats():
             
         if response.status_code == 200:
             stats = response.json()
-            for s in stats:
-                if s['author']['login'].lower() == USERNAME.lower():
-                    total_commits += s['total']
-                    for week in s['weeks']:
-                        total_loc += week['a']
+            if stats:
+                for s in stats:
+                    if s['author']['login'].lower() == USERNAME.lower():
+                        total_commits += s['total']
+                        for week in s['weeks']:
+                            total_loc += week['a']
     return repo_count, total_commits, total_loc
 
 def generate_svg(repos, commits, contribs, loc):
@@ -61,18 +81,18 @@ def generate_svg(repos, commits, contribs, loc):
       <g transform="translate(25, 85)">
         <text x="0" y="0" class="stat">📦 Total Repositories: <tspan class="bold">{repos}</tspan></text>
         <text x="0" y="30" class="stat">🔥 Lifetime Commits: <tspan class="bold">{commits:,}</tspan></text>
-        <text x="0" y="60" class="stat">✨ Global Contributions: <tspan class="bold">{contribs:,}</tspan></text>
-        <text x="0" y="95" class="stat" fill="#79c0ff">💻 Lines of Code Authored: <tspan class="bold" fill="#79c0ff">{loc:,}</tspan></text>
+        <text x="0" y="60" class="stat">✨ Lifetime Contributions: <tspan class="bold">{contribs:,}</tspan></text>
+        <text x="0" y="95" class="stat" fill="#79c0ff">💻 Lifetime Lines of Code: <tspan class="bold" fill="#79c0ff">{loc:,}</tspan></text>
       </g>
       <line x1="25" y1="210" x2="425" y2="210" stroke="#30363d" stroke-width="1" />
-      <text x="25" y="235" class="fork-note">* This data represents original repositories only (forked repos are excluded)</text>
+      <text x="25" y="235" class="fork-note">* Data covers your entire GitHub history (forks excluded)</text>
     </svg>
     """
     with open('github_stats.svg', 'w') as f: f.write(svg)
 
 if __name__ == "__main__":
-    print("Restoring Lifetime Stats...")
-    contribs = get_total_contributions()
-    repos, commits, loc = get_lifetime_stats()
+    print("Calculating full lifetime statistics...")
+    contribs = get_lifetime_contributions()
+    repos, commits, loc = get_lifetime_repo_stats()
     generate_svg(repos, commits, contribs, loc)
-    print("Success! Stats restored.")
+    print("Success! Lifetime stats calculated.")
