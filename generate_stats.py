@@ -27,28 +27,32 @@ def calculate_stats(repos):
     lines_written = 0
     
     for repo in repos:
-        # Skip forks to only count your original work
-        if repo.get('fork'):
-            continue
-            
         repo_name = repo['name']
         owner = repo['owner']['login']
         url = f'https://api.github.com/repos/{owner}/{repo_name}/stats/contributors'
         
-        # Fetch stats, handling GitHub's 202 Accepted background processing status
+        # New, more patient retry logic
+        max_retries = 5
+        retries = 0
         response = requests.get(url, headers=headers)
-        if response.status_code == 202:
-            time.sleep(2)
+        
+        while response.status_code == 202 and retries < max_retries:
+            print(f"Waiting for stats on '{repo_name}', retrying in 5 seconds...")
+            time.sleep(5)
             response = requests.get(url, headers=headers)
+            retries += 1
             
         if response.status_code == 200:
             stats = response.json()
-            for user_stat in stats:
-                if user_stat['author']['login'].lower() == USERNAME.lower():
-                    total_commits += user_stat['total']
-                    for week in user_stat['weeks']:
-                        lines_written += week['a']
-                        
+            if stats: # Ensure stats are not empty
+                for user_stat in stats:
+                    if user_stat['author']['login'].lower() == USERNAME.lower():
+                        total_commits += user_stat['total']
+                        for week in user_stat['weeks']:
+                            lines_written += week['a']
+        else:
+            print(f"Skipping {repo_name}: Could not fetch stats (status code: {response.status_code})")
+
     return total_commits, lines_written
 
 def generate_svg(repos_count, commits, loc):
@@ -60,7 +64,6 @@ def generate_svg(repos_count, commits, loc):
       <text x="20" y="120" fill="#c9d1d9" font-family="Arial" font-size="16">🔥 Total Commits: {commits:,}</text>
       <text x="20" y="155" fill="#c9d1d9" font-family="Arial" font-size="16">💻 Lines of Code Written: {loc:,}</text>
     </svg>"""
-    
     with open('github_stats.svg', 'w') as f:
         f.write(svg_template)
 
@@ -68,6 +71,7 @@ if __name__ == "__main__":
     print(f"Fetching stats for {USERNAME}...")
     my_repos = get_repos()
     original_repos =[r for r in my_repos if not r.get('fork')]
+    
     commits, loc = calculate_stats(original_repos)
     generate_svg(len(original_repos), commits, loc)
     print("SVG successfully generated!")
