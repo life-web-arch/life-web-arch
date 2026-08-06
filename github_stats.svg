@@ -16,11 +16,11 @@
   <g transform="translate(25, 80)">
     <text x="0" y="0" class="stat">📦 Total Repositories: <tspan class="bold">43</tspan></text>
     <text x="0" y="30" class="stat">🗓️ Member Since: <tspan class="bold">January 22, 2024 at 15:54 UTC (21:24 IST)</tspan></text>
-    <text x="0" y="60" class="stat">🔥 Lifetime Commits: <tspan class="bold">9,302</tspan></text>
-    <text x="0" y="90" class="stat">✨ Total Contributions: <tspan class="bold">9,272</tspan></text>
-    <text x="0" y="120" class="stat">💾 Total Codebase Size: <tspan class="bold">177.4 MB</tspan></text>
+    <text x="0" y="60" class="stat">🔥 Lifetime Commits: <tspan class="bold">9,350</tspan></text>
+    <text x="0" y="90" class="stat">✨ Total Contributions: <tspan class="bold">9,320</tspan></text>
+    <text x="0" y="120" class="stat">💾 Total Codebase Size: <tspan class="bold">175.0 MB</tspan></text>
     
-    <text x="0" y="160" class="stat" fill="#79c0ff">💻 Lines of Code files Authored: <tspan class="bold" fill="#79c0ff">74,359,928</tspan></text>
+    <text x="0" y="160" class="stat" fill="#79c0ff">💻 Lines of Code files Authored: <tspan class="bold" fill="#79c0ff">75,882,452</tspan></text>
 
     <text x="0" y="200" class="stat">🏆 Comprehensive Language Breakdown</text>
     <g transform="translate(0, 220)">
@@ -28,17 +28,17 @@
             <rect x="0" y="0" width="520" height="12" rx="6" />
         </clipPath>
         <g clip-path="url(#bar-clip)">
-            <rect x="0" y="0" width="341.31064971970176" height="12" fill="#3178c6" />
-<rect x="341.31064971970176" y="0" width="71.30487918995314" height="12" fill="#e34c26" />
-<rect x="412.6155289096549" y="0" width="41.235866773365004" height="12" fill="#4F5D95" />
-<rect x="453.8513956830199" y="0" width="26.074066066918785" height="12" fill="#89e051" />
-<rect x="479.9254617499387" y="0" width="14.827091158236207" height="12" fill="#f1e05a" />
-<rect x="494.7525529081749" y="0" width="12.65055274468552" height="12" fill="#563d7c" />
-<rect x="507.4031056528604" y="0" width="12.093903674638925" height="12" fill="#3572A5" />
+            <rect x="0" y="0" width="341.5064509556939" height="12" fill="#3178c6" />
+<rect x="341.5064509556939" y="0" width="71.2267459186879" height="12" fill="#e34c26" />
+<rect x="412.73319687438175" y="0" width="41.19068202302164" height="12" fill="#4F5D95" />
+<rect x="453.92387889740337" y="0" width="26.045495061678487" height="12" fill="#89e051" />
+<rect x="479.96937395908185" y="0" width="14.810844175579453" height="12" fill="#f1e05a" />
+<rect x="494.7802181346613" y="0" width="12.636690732990319" height="12" fill="#563d7c" />
+<rect x="507.4169088676516" y="0" width="12.080651618577667" height="12" fill="#3572A5" />
 
         </g>
         <circle cx="5" cy="35" r="5" fill="#3178c6" />
-<text x="15" y="39" font-size="13" font-weight="600" fill="#c9d1d9">TypeScript 65.6%</text>
+<text x="15" y="39" font-size="13" font-weight="600" fill="#c9d1d9">TypeScript 65.7%</text>
 <circle cx="245" cy="35" r="5" fill="#e34c26" />
 <text x="255" y="39" font-size="13" font-weight="600" fill="#c9d1d9">HTML 13.7%</text>
 <circle cx="5" cy="59" r="5" fill="#4F5D95" />
@@ -46,7 +46,7 @@
 <circle cx="245" cy="59" r="5" fill="#89e051" />
 <text x="255" y="63" font-size="13" font-weight="600" fill="#c9d1d9">Shell 5.0%</text>
 <circle cx="5" cy="83" r="5" fill="#f1e05a" />
-<text x="15" y="87" font-size="13" font-weight="600" fill="#c9d1d9">JavaScript 2.9%</text>
+<text x="15" y="87" font-size="13" font-weight="600" fill="#c9d1d9">JavaScript 2.8%</text>
 <circle cx="245" cy="83" r="5" fill="#563d7c" />
 <text x="255" y="87" font-size="13" font-weight="600" fill="#c9d1d9">CSS 2.4%</text>
 <circle cx="5" cy="107" r="5" fill="#3572A5" />
@@ -60,5 +60,5 @@
   </g>
   <line x1="25" y1="430" x2="605" y2="430" stroke="#30363d" stroke-width="1" />
   <text x="25" y="455" class="fork-note">* This data excludes forks and includes all private activity</text>
-  <text x="605" y="455" class="fork-note" text-anchor="end">Last Updated: August 05, 2026 at 07:14 IST</text>
+  <text x="605" y="455" class="fork-note" text-anchor="end">Last Updated: August 06, 2026 at 07:14 IST</text>
 </svg>
