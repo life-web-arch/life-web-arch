@@ -16,11 +16,11 @@
   <g transform="translate(25, 80)">
     <text x="0" y="0" class="stat">📦 Total Repositories: <tspan class="bold">43</tspan></text>
     <text x="0" y="30" class="stat">🗓️ Member Since: <tspan class="bold">January 22, 2024 at 15:54 UTC (21:24 IST)</tspan></text>
-    <text x="0" y="60" class="stat">🔥 Lifetime Commits: <tspan class="bold">10,643</tspan></text>
-    <text x="0" y="90" class="stat">✨ Total Contributions: <tspan class="bold">10,603</tspan></text>
-    <text x="0" y="120" class="stat">💾 Total Codebase Size: <tspan class="bold">227.8 MB</tspan></text>
+    <text x="0" y="60" class="stat">🔥 Lifetime Commits: <tspan class="bold">10,660</tspan></text>
+    <text x="0" y="90" class="stat">✨ Total Contributions: <tspan class="bold">10,619</tspan></text>
+    <text x="0" y="120" class="stat">💾 Total Codebase Size: <tspan class="bold">238.1 MB</tspan></text>
     
-    <text x="0" y="160" class="stat" fill="#79c0ff">💻 Lines of Code files Authored: <tspan class="bold" fill="#79c0ff">123,585,906</tspan></text>
+    <text x="0" y="160" class="stat" fill="#79c0ff">💻 Lines of Code files Authored: <tspan class="bold" fill="#79c0ff">124,298,592</tspan></text>
 
     <text x="0" y="200" class="stat">🏆 Comprehensive Language Breakdown</text>
     <g transform="translate(0, 220)">
@@ -28,23 +28,23 @@
             <rect x="0" y="0" width="520" height="12" rx="6" />
         </clipPath>
         <g clip-path="url(#bar-clip)">
-            <rect x="0" y="0" width="356.85575513418996" height="12" fill="#3178c6" />
-<rect x="356.85575513418996" y="0" width="64.385378308858" height="12" fill="#e34c26" />
-<rect x="421.24113344304794" y="0" width="37.23429465498429" height="12" fill="#4F5D95" />
-<rect x="458.47542809803224" y="0" width="25.882290098058398" height="12" fill="#89e051" />
-<rect x="484.3577181960906" y="0" width="13.40915017508521" height="12" fill="#f1e05a" />
-<rect x="497.7668683711758" y="0" width="11.494391494515323" height="12" fill="#563d7c" />
-<rect x="509.2612598656911" y="0" width="10.284560208577451" height="12" fill="#3572A5" />
+            <rect x="0" y="0" width="358.5644279687937" height="12" fill="#3178c6" />
+<rect x="358.5644279687937" y="0" width="64.61014144280358" height="12" fill="#e34c26" />
+<rect x="423.1745694115973" y="0" width="37.36427597957575" height="12" fill="#4F5D95" />
+<rect x="460.538845391173" y="0" width="23.694449043348722" height="12" fill="#89e051" />
+<rect x="484.2332944345217" y="0" width="13.45596022258453" height="12" fill="#f1e05a" />
+<rect x="497.68925465710623" y="0" width="11.534517304489007" height="12" fill="#563d7c" />
+<rect x="509.2237719615952" y="0" width="10.320462614441144" height="12" fill="#3572A5" />
 
         </g>
         <circle cx="5" cy="35" r="5" fill="#3178c6" />
-<text x="15" y="39" font-size="13" font-weight="600" fill="#c9d1d9">TypeScript 68.6%</text>
+<text x="15" y="39" font-size="13" font-weight="600" fill="#c9d1d9">TypeScript 69.0%</text>
 <circle cx="245" cy="35" r="5" fill="#e34c26" />
 <text x="255" y="39" font-size="13" font-weight="600" fill="#c9d1d9">HTML 12.4%</text>
 <circle cx="5" cy="59" r="5" fill="#4F5D95" />
 <text x="15" y="63" font-size="13" font-weight="600" fill="#c9d1d9">PHP 7.2%</text>
 <circle cx="245" cy="59" r="5" fill="#89e051" />
-<text x="255" y="63" font-size="13" font-weight="600" fill="#c9d1d9">Shell 5.0%</text>
+<text x="255" y="63" font-size="13" font-weight="600" fill="#c9d1d9">Shell 4.6%</text>
 <circle cx="5" cy="83" r="5" fill="#f1e05a" />
 <text x="15" y="87" font-size="13" font-weight="600" fill="#c9d1d9">JavaScript 2.6%</text>
 <circle cx="245" cy="83" r="5" fill="#563d7c" />
@@ -60,5 +60,5 @@
   </g>
   <line x1="25" y1="430" x2="605" y2="430" stroke="#30363d" stroke-width="1" />
   <text x="25" y="455" class="fork-note">* This data excludes forks and includes all private activity</text>
-  <text x="605" y="455" class="fork-note" text-anchor="end">Last Updated: September 01, 2026 at 08:13 IST</text>
+  <text x="605" y="455" class="fork-note" text-anchor="end">Last Updated: September 02, 2026 at 07:34 IST</text>
 </svg>
